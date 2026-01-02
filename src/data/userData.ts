@@ -9,7 +9,7 @@ export const userData: User = {
     expiryDate: "2029-05-14",
     address: "Strasse 123, Luzern",
     photo: null,
-    placeOfOrigin: "Luzern/LU",
+    placeOfOrigin: "Luzern LU",
     biometricHash: "a1b2c3d4e5f6"
 };
 

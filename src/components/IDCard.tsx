@@ -11,11 +11,10 @@ interface IDCardProps {
 const IDCard: React.FC<IDCardProps> = ({ user }) => {
     const formatDate = (dateString: string): string => {
         const date = new Date(dateString);
-        return date.toLocaleDateString("en-GB", {
-            day: "2-digit",
-            month: "short",
-            year: "numeric",
-        });
+        const day = String(date.getDate()).padStart(2, "0");
+        const month = String(date.getMonth() + 1).padStart(2, "0"); // Months are 0-indexed
+        const year = date.getFullYear();
+        return `${day}.${month}.${year}`;
     };
 
     return (
@@ -46,11 +45,12 @@ const IDCard: React.FC<IDCardProps> = ({ user }) => {
                 </View>
 
                 <View style={styles.infoSection}>
-                    <InfoRow label="Nachname" value={user.lastName.toUpperCase()} />
-                    <InfoRow label="Vorname" value={user.firstName.toUpperCase()} />
+                    <InfoRow label="Name" value={user.lastName.toUpperCase()} />
+                    <InfoRow label="Vorname(n)" value={user.firstName.toUpperCase()} />
                     <InfoRow label="Geburtsdatum" value={formatDate(user.dateOfBirth)} />
-                    <InfoRow label="Document No." value={user.id} small />
-                    <InfoRow label="Valid Until" value={formatDate(user.expiryDate)} />
+                    <InfoRow label="Heimatort" value={user.placeOfOrigin} />
+                    <InfoRow label="Dokument ID" value={user.id} small />
+                    <InfoRow label="Gültig bis" value={formatDate(user.expiryDate)} />
                 </View>
             </View>
 
