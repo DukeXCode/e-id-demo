@@ -3,12 +3,12 @@ export interface User {
     firstName: string;
     lastName: string;
     dateOfBirth: string;
-    nationality: string;
     documentType: string;
     expiryDate: string;
     address: string;
     photo: string | null;
-    biometricHash: string;
+    placeOfOrigin: string;
+    biometricHash: string
 }
 
 export interface QRVerificationData {
@@ -16,7 +16,6 @@ export interface QRVerificationData {
     id: string;
     name: string;
     dob: string;
-    nationality: string;
     expiry: string;
     hash: string;
     timestamp: string;

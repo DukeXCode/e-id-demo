@@ -27,11 +27,11 @@ const IDCard: React.FC<IDCardProps> = ({ user }) => {
                 style={styles.cardHeader}
             >
                 <View style={styles.headerContent}>
-                    <Text style={styles.countryText}>EUROPEAN UNION</Text>
+                    <Text style={styles.countryText}>SWITZERLAND</Text>
                     <Text style={styles.documentType}>{user.documentType}</Text>
                 </View>
                 <View style={styles.flagContainer}>
-                    <Text style={styles.flagEmoji}>🇳🇱</Text>
+                    <Text style={styles.flagEmoji}>🇨🇭</Text>
                 </View>
             </LinearGradient>
 
@@ -46,13 +46,9 @@ const IDCard: React.FC<IDCardProps> = ({ user }) => {
                 </View>
 
                 <View style={styles.infoSection}>
-                    <InfoRow label="Surname" value={user.lastName.toUpperCase()} />
-                    <InfoRow label="Given Names" value={user.firstName.toUpperCase()} />
-                    <InfoRow label="Date of Birth" value={formatDate(user.dateOfBirth)} />
-                    <InfoRow
-                        label="Nationality"
-                        value={user.nationality.toUpperCase()}
-                    />
+                    <InfoRow label="Nachname" value={user.lastName.toUpperCase()} />
+                    <InfoRow label="Vorname" value={user.firstName.toUpperCase()} />
+                    <InfoRow label="Geburtsdatum" value={formatDate(user.dateOfBirth)} />
                     <InfoRow label="Document No." value={user.id} small />
                     <InfoRow label="Valid Until" value={formatDate(user.expiryDate)} />
                 </View>
