@@ -40,14 +40,9 @@ const HomeScreen: React.FC = () => {
                 contentContainerStyle={styles.contentContainer}
                 showsVerticalScrollIndicator={false}
             >
-                <View style={styles.statusBanner}>
-                    <View style={styles.statusDot} />
-                    <Text style={styles.statusText}>Identity Verified</Text>
-                </View>
-
                 <IDCard user={userData} />
 
-                <QRCodeDisplay data={qrData} title="Authority Verification" />
+                <QRCodeDisplay data={qrData} title="Verifikation" />
 
                 <TouchableOpacity
                     style={styles.scanButton}
@@ -62,9 +57,9 @@ const HomeScreen: React.FC = () => {
                     >
                         <Text style={styles.scanButtonIcon}>📷</Text>
                         <View style={styles.scanButtonContent}>
-                            <Text style={styles.scanButtonTitle}>Scan QR Code</Text>
+                            <Text style={styles.scanButtonTitle}>QR Code scannen</Text>
                             <Text style={styles.scanButtonSubtitle}>
-                                Verify at events, venues & services
+                                Verifiziere dich in Online-Shops und Services.
                             </Text>
                         </View>
                         <Text style={styles.scanButtonArrow}>→</Text>
@@ -72,16 +67,16 @@ const HomeScreen: React.FC = () => {
                 </TouchableOpacity>
 
                 <View style={styles.infoCards}>
-                    <InfoCard icon="📋" title="Activity Log" />
-                    <InfoCard icon="⚙️" title="Settings" />
-                    <InfoCard icon="❓" title="Help" />
+                    <InfoCard icon="📋" title="Aktivität" />
+                    <InfoCard icon="⚙️" title="Einstellungen" />
+                    <InfoCard icon="❓" title="Hilfe" />
                 </View>
 
                 <View style={styles.footer}>
                     <Text style={styles.footerText}>
-                        🏛️ Official Government Digital ID
+                        🏛️ e-ID Prototyp
                     </Text>
-                    <Text style={styles.footerVersion}>Version 2.1.0</Text>
+                    <Text style={styles.footerVersion}>Version 0.1.0</Text>
                 </View>
             </ScrollView>
         </SafeAreaView>

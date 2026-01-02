@@ -68,18 +68,18 @@ const QRCodeDisplay: React.FC<QRCodeDisplayProps> = ({
                 <View style={styles.timerContainer}>
                     <View style={styles.timerDot} />
                     <Text style={styles.timerText}>
-                        Refreshes in {formatTime(timeLeft)}
+                        Aktualisierung in {formatTime(timeLeft)}
                     </Text>
                 </View>
             </View>
 
             <Text style={styles.instruction}>
-                Present this QR code to authorities for identity verification
+                Verwende diesen QR-Code um dich auszuweisen.
             </Text>
 
             <View style={styles.securityBadge}>
                 <Text style={styles.securityIcon}>🔒</Text>
-                <Text style={styles.securityText}>Cryptographically Signed</Text>
+                <Text style={styles.securityText}>Kryptographisch gesichert</Text>
             </View>
         </View>
     );

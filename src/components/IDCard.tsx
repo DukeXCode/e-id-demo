@@ -56,13 +56,13 @@ const IDCard: React.FC<IDCardProps> = ({ user }) => {
 
             <View style={styles.cardFooter}>
                 <Text style={styles.mrzText}>
-                    P&lt;NLD{user.lastName.toUpperCase()}
+                    P&lt;CH{user.lastName.toUpperCase()}
                     {"<".repeat(Math.max(0, 20 - user.lastName.length))}
                     {user.firstName.toUpperCase()}
                 </Text>
                 <Text style={styles.mrzText}>
                     {user.id.replace(/-/g, "")}
-                    {"<".repeat(10)}NLD
+                    {"<".repeat(10)}CH
                 </Text>
             </View>
         </View>
