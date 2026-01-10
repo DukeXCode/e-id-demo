@@ -6,6 +6,7 @@ import QRCodeDisplay from "../components/QRCodeDisplay";
 import {generateQRData, userData} from "../data/userData";
 import {colors} from "../theme/colors";
 import {useRouter} from "expo-router";
+import {getPublicKey, initPrivateKey} from "@/src/crypto";
 
 interface InfoCardProps {
     icon: string;
@@ -77,11 +78,17 @@ const HomeScreen: React.FC = () => {
                         🏛️ e-ID Prototyp
                     </Text>
                     <Text style={styles.footerVersion}>Version 0.1.0</Text>
+                    <Text style={styles.footerVersion}>PK: {getPK()}</Text>
                 </View>
             </ScrollView>
         </SafeAreaView>
     );
 };
+
+const getPK = async () => {
+    await initPrivateKey();
+    return await getPublicKey();
+}
 
 const styles = StyleSheet.create({
     safeArea: {
