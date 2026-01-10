@@ -4,6 +4,7 @@ import {BarcodeScanningResult, CameraView, useCameraPermissions} from "expo-came
 import {colors} from "../theme/colors";
 import {QRData, ScanResult} from "../types";
 import {useRouter} from "expo-router";
+import authenticate from "@/src/insecureAuth";
 
 const { width } = Dimensions.get("window");
 const SCAN_AREA_SIZE = width * 0.7;
@@ -48,7 +49,8 @@ const ScannerScreen: React.FC = () => {
         setShowResult(false);
     }, []);
 
-    const handleDone = useCallback(() => {
+    const handleAuthenticate = useCallback(() => {
+        authenticate("https://q999e.wiremockapi.cloud/auth")
         resetScanner();
         router.back();
     }, [resetScanner, router]);
@@ -203,9 +205,9 @@ const ScannerScreen: React.FC = () => {
 
                             <TouchableOpacity
                                 style={[styles.modalButton, styles.modalButtonPrimary]}
-                                onPress={handleDone}
+                                onPress={handleAuthenticate}
                             >
-                                <Text style={styles.modalButtonPrimaryText}>Done</Text>
+                                <Text style={styles.modalButtonPrimaryText}>Authenticate</Text>
                             </TouchableOpacity>
                         </View>
                     </View>
