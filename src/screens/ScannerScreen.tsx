@@ -234,7 +234,7 @@ const styles = StyleSheet.create({
         justifyContent: "space-between",
         alignItems: "center",
         padding: 20,
-        paddingTop: 10,
+        paddingTop: 25,
     },
     closeButton: {
         width: 40,
