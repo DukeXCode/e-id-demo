@@ -5,8 +5,9 @@ const SERVER_ENDPOINT = "https://q999e.wiremockapi.cloud/auth";
 
 const authenticate = async (callbackUrl: string)=> {
     try {
+        const pk = await getPublicKey();
         const response = await axios.post(SERVER_ENDPOINT, {
-            publicKey: getPublicKey(),
+            publicKey: pk,
             callbackUrl: callbackUrl,
         });
         console.log('Response:', response.data);
