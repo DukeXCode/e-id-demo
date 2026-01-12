@@ -1,9 +1,11 @@
 import {getPublicKey} from "@/src/crypto";
 import axios from "axios";
 
+const SERVER_ENDPOINT = "https://q999e.wiremockapi.cloud/auth";
+
 const authenticate = async (callbackUrl: string)=> {
     try {
-        const response = await axios.post(callbackUrl, {
+        const response = await axios.post(SERVER_ENDPOINT, {
             publicKey: getPublicKey(),
             callbackUrl: callbackUrl,
         });

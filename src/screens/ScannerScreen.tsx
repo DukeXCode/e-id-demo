@@ -50,7 +50,7 @@ const ScannerScreen: React.FC = () => {
     }, []);
 
     const handleAuthenticate = useCallback(() => {
-        authenticate("https://q999e.wiremockapi.cloud/auth")
+        authenticate("https://callback-url.example/path")
         resetScanner();
         router.back();
     }, [resetScanner, router]);
