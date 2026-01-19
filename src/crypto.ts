@@ -1,28 +1,21 @@
-import * as SecureStore from "expo-secure-store";
+import {createSign, generateKeyPairSync} from 'react-native-quick-crypto';
 
-const PRIVATE_KEY_KEY = "APP_PRIVATE_KEY";
-
-/**
- * Initialize the private key in secure storage.
- * Generates a new key if one doesn’t exist yet.
- */
-export const initPrivateKey = async (): Promise<void> => {
-    const existing = await SecureStore.getItemAsync(PRIVATE_KEY_KEY);
-
-    if (existing) {
-        console.info("Private key already initialized.");
-        return;
-    }
-
-    const key = "mySecretPrivateKey";
-
-    await SecureStore.setItemAsync(PRIVATE_KEY_KEY, key, {
-        keychainAccessible: SecureStore.ALWAYS_THIS_DEVICE_ONLY,
-    });
-
-    console.info("New private key generated and stored securely.");
-};
+const { privateKey, publicKey } = generateKeyPairSync('ec', {
+    namedCurve: 'P-256',
+});
 
 export const getPublicKey = async (): Promise<string> => {
-    return "myPublicKey"
+    if (!publicKey) {
+        throw new Error('Public key is missing');
+    }
+    return publicKey?.toString();
+}
+
+function signPayload(payload: object, privKey: string) {
+    const signer = createSign('SHA256');
+    signer.update(JSON.stringify(payload));
+    if (!privKey) {
+        throw new Error("Private key not initialized.");
+    }
+    return signer.sign(privateKey!!.toString(), 'base64');
 }

@@ -6,7 +6,7 @@ import QRCodeDisplay from "../components/QRCodeDisplay";
 import {generateQRData, userData} from "../data/userData";
 import {colors} from "../theme/colors";
 import {useRouter} from "expo-router";
-import {getPublicKey, initPrivateKey} from "@/src/crypto";
+import {getPublicKey} from "@/src/crypto";
 
 interface InfoCardProps {
     icon: string;
@@ -86,7 +86,6 @@ const HomeScreen: React.FC = () => {
 };
 
 const getPK = async () => {
-    await initPrivateKey();
     return await getPublicKey();
 }
 
