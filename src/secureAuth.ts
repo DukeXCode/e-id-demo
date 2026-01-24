@@ -1,14 +1,15 @@
-import {getPublicKey} from "@/src/crypto";
+import {getPublicKey, signPayload} from "@/src/crypto";
 import axios from "axios";
 
 const SERVER_ENDPOINT = "https://q999e.wiremockapi.cloud/auth";
 
-const authenticateCentral = async (callbackUrl: string)=> {
+const authenticateLocal = async (callbackUrl: string)=> {
     try {
         const pk = await getPublicKey();
         const response = await axios.post(SERVER_ENDPOINT, {
             publicKey: pk,
             callbackUrl: callbackUrl,
+            message: signPayload("User verification."),
         });
         console.log('Response:', response.data);
     } catch (error) {
@@ -16,4 +17,4 @@ const authenticateCentral = async (callbackUrl: string)=> {
     }
 }
 
-export default authenticateCentral;
+export default authenticateLocal;

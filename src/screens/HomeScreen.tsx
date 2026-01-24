@@ -6,7 +6,8 @@ import QRCodeDisplay from "../components/QRCodeDisplay";
 import {generateQRData, userData} from "../data/userData";
 import {colors} from "../theme/colors";
 import {useRouter} from "expo-router";
-import {getPublicKey} from "@/src/crypto";
+import {getPublicKey, setIsLocal} from "@/src/crypto";
+import ToggleButton from "@/src/components/ToggleButton";
 
 interface InfoCardProps {
     icon: string;
@@ -72,6 +73,8 @@ const HomeScreen: React.FC = () => {
                     <InfoCard icon="⚙️" title="Einstellungen" />
                     <InfoCard icon="❓" title="Hilfe" />
                 </View>
+
+                <ToggleButton onToggle={(b) => setIsLocal(b)} />
 
                 <View style={styles.footer}>
                     <Text style={styles.footerText}>

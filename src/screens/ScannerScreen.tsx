@@ -4,7 +4,9 @@ import {BarcodeScanningResult, CameraView, useCameraPermissions} from "expo-came
 import {colors} from "../theme/colors";
 import {QRData, ScanResult} from "../types";
 import {useRouter} from "expo-router";
-import authenticate from "@/src/insecureAuth";
+import authenticateCentral from "@/src/insecureAuth";
+import {isLocal} from "@/src/crypto";
+import authenticateLocal from "@/src/secureAuth";
 
 const { width } = Dimensions.get("window");
 const SCAN_AREA_SIZE = width * 0.7;
@@ -49,8 +51,12 @@ const ScannerScreen: React.FC = () => {
         setShowResult(false);
     }, []);
 
-    const handleAuthenticate = useCallback(() => {
-        authenticate("https://callback-url.example/path")
+    const handleAuthenticate = useCallback(async () => {
+        if (isLocal) {
+            await authenticateLocal("https://callback-url.example/path");
+        } else {
+            await authenticateCentral("https://callback-url.example/path");
+        }
         resetScanner();
         router.back();
     }, [resetScanner, router]);
