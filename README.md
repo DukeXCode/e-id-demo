@@ -2,7 +2,7 @@
 
 This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
 
-## Get started
+## Start app
 NPM and Node need to be installed in order to run the app.
 
 1. Install dependencies
@@ -17,14 +17,31 @@ NPM and Node need to be installed in order to run the app.
    npx expo start
    ```
 
-In the output, you'll find options to open the app in a
+## Start server component
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+Install dependencies:
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+`cd central-server
+pip install -r requirements.txt`
+
+Run the server:
+
+`uvicorn main:app --reload`
+
+Test the endpoint:
+
+`curl -X POST http://localhost:8000/api/verify
+-H "Content-Type: application/json"
+-d '{"publicKey":"pk_alice_123","callbackUrl":"https://webhook.site/your-id"}'`
+
+## Start Test-Webshop
+
+Install dependencies:
+`cd test-webshop
+npm install`
+
+Start the webshop:
+`npm run start`
 
 ## Learn more
 
